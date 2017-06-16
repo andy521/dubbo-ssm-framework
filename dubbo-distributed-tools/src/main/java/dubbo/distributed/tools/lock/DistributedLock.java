@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  * 在获取分布式锁的时候在locker节点下创建临时顺序节点，释放锁的时候删除该临时节点。客户端调用createNode方法在locker下创建临时顺序节点，
  * 然后调用getChildren(“locker”)来获取locker下面的所有子节点，注意此时不用设置任何Watcher。客户端获取到所有的子节点path之后，如果发现自己在之
  * 前创建的子节点序号最小，那么就认为该客户端获取到了锁。如果发现自己创建的节点并非locker所有子节点中最小的，说明自己还没有获取到锁，
- * 可以给自己小的节点设置Watcher，如果他被删除则提示自己，然后自己可以先完成别的工作，看需求，留给你们自己实现 
+ * 可以给自己小的节点设置Watcher，如果他被删除则提示自己，然后自己可以先完成别的工作。
  */
 public class DistributedLock {
 	
